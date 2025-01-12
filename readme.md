@@ -1,6 +1,6 @@
-# Steam账号切换器
+# Windows的TV桌面启动器
 
-	1、用来切换Steam账号
+	Windows的TV桌面启动器
 
 
 ![image](/UI/main.png) 
