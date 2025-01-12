@@ -32,5 +32,10 @@ namespace WindowsTVDesktop.Views
             Application.Current.MainWindow.Visibility = System.Windows.Visibility.Hidden;
             e.Cancel = true;
         }
+
+        private void AppListBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            AppGlobal.MainWindowViewModel.AppListBox_MouseLeftButtonUp();
+        }
     }
 }

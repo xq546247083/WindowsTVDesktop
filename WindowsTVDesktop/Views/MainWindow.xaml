@@ -23,7 +23,8 @@
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ItemsSource="{Binding AppList}"
-                 SelectedItem="{Binding SelectedApp}">
+                 SelectedItem="{Binding SelectedApp}"
+                 MouseLeftButtonUp="AppListBox_MouseLeftButtonUp">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
@@ -33,24 +34,18 @@
                 <DataTemplate>
                     <Border BorderThickness="1"
                             BorderBrush="Black">
-                        <Button Command="{Binding ClickCommand}">>
-                            <Button.Template>
-                                <ControlTemplate>
-                                    <Grid Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
-                                          Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}">
-                                        <TextBlock VerticalAlignment="Center"
-                                                   HorizontalAlignment="Center"
-                                                   Text="{Binding Title}"
-                                                   FontSize="30"
-                                                   FontWeight="Bold" />
-                                        <Image Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
-                                               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
-                                               Stretch="Fill"
-                                               Source="{Binding IconPathExt, IsAsync=True}" />
-                                    </Grid>
-                                </ControlTemplate>
-                            </Button.Template>
-                        </Button>
+                        <Grid Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
+                              Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}">
+                            <TextBlock VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       Text="{Binding Title}"
+                                       FontSize="30"
+                                       FontWeight="Bold" />
+                            <Image Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
+                                   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
+                                   Stretch="Fill"
+                                   Source="{Binding IconPathExt, IsAsync=True}" />
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>

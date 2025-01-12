@@ -135,7 +135,6 @@ namespace WindowsTVDesktop.ViewModels
         /// <param name="e"></param>
         public void OnKeyDown(KeyEventArgs e)
         {
-            UIHelper.ShowToolTip(e.Key.ToString());
             if (e.Key == Key.Return)
             {
                 selectedApp?.Click();
@@ -143,6 +142,11 @@ namespace WindowsTVDesktop.ViewModels
             else if (e.Key == Key.Apps)
             {
             }
+        }
+
+        public void AppListBox_MouseLeftButtonUp()
+        {
+            selectedApp?.Click();
         }
 
         #endregion
