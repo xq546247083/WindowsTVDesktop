@@ -135,11 +135,7 @@ namespace WindowsTVDesktop.ViewModels
         /// <param name="e"></param>
         public void OnKeyDown(KeyEventArgs e)
         {
-            if (e.Key == Key.Return)
-            {
-                selectedApp?.Click();
-            }
-            else if (e.Key == Key.Apps)
+            if (e.Key == Key.Apps)
             {
             }
         }

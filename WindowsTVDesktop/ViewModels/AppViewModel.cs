@@ -74,12 +74,7 @@ namespace WindowsTVDesktop.ViewModels
         }
 
         /// <summary>
-        /// 点击新建
-        /// </summary>
-        public RelayCommand ClickCommand => new RelayCommand(Click);
-
-        /// <summary>
-        /// 点击新建
+        /// 点击
         /// </summary>
         public void Click()
         {
