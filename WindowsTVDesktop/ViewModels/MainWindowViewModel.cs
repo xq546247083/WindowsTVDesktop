@@ -1,11 +1,9 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows;
-using System.Windows.Controls;
+using System.Windows.Input;
 using WindowsTVDesktop.Common;
-using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
-using WindowsTVDesktop.Models;
 
 namespace WindowsTVDesktop.ViewModels
 {
@@ -20,6 +18,7 @@ namespace WindowsTVDesktop.ViewModels
         public MainWindowViewModel()
         {
             ReLoad();
+            SelectedApp = AppList.FirstOrDefault();
         }
 
         #region 绑定属性
@@ -48,20 +47,20 @@ namespace WindowsTVDesktop.ViewModels
         /// <summary>
         /// 选中应用
         /// </summary>
-        private AppInfo selectedAppInfo;
+        private AppViewModel selectedApp;
 
         /// <summary>
         /// 选中应用
         /// </summary>
-        public AppInfo SelectedAppInfo
+        public AppViewModel SelectedApp
         {
             get
             {
-                return selectedAppInfo;
+                return selectedApp;
             }
             set
             {
-                selectedAppInfo = value;
+                selectedApp = value;
                 OnPropertyChanged();
             }
         }
@@ -104,19 +103,6 @@ namespace WindowsTVDesktop.ViewModels
 
         }
 
-        /// <summary>
-        /// 退出
-        /// </summary>
-        public RelayCommand ExitCommand => new RelayCommand(ClickExit);
-
-        /// <summary>
-        /// 退出
-        /// </summary>
-        private void ClickExit()
-        {
-            Application.Current.Shutdown();
-        }
-
         #endregion
 
         #region 私有方法
@@ -141,6 +127,22 @@ namespace WindowsTVDesktop.ViewModels
         public void ReLoad()
         {
             LoadConfig();
+        }
+
+        /// <summary>
+        /// 点击按钮
+        /// </summary>
+        /// <param name="e"></param>
+        public void OnKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                selectedApp.Click();
+            }
+            else if (e.Key == Key.Apps)
+            {
+                MessageBox.Show("点击菜单键");
+            }
         }
 
         #endregion

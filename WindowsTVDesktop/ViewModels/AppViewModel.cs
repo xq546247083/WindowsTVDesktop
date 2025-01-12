@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 using WindowsTVDesktop.Common;
 using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
@@ -80,7 +81,7 @@ namespace WindowsTVDesktop.ViewModels
         /// <summary>
         /// 点击新建
         /// </summary>
-        private void Click()
+        public void Click()
         {
             if (AppType == AppType.Add)
             {
@@ -105,7 +106,15 @@ namespace WindowsTVDesktop.ViewModels
                     }
                 }
             }
-            else 
+            else if (AppType == AppType.Config)
+            {
+
+            }
+            else if (AppType == AppType.Exit)
+            {
+                Application.Current.Shutdown();
+            }
+            else if (AppType == AppType.Desktop)
             {
                 var process = new Process();
                 process.StartInfo.FileName = StartPath;
@@ -114,6 +123,5 @@ namespace WindowsTVDesktop.ViewModels
                 process.Start();
             }
         }
-
     }
 }

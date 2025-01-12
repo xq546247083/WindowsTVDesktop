@@ -2,7 +2,9 @@
 {
     public enum AppType
     {
+        Desktop,
         Add,
-        Desktop
+        Config,
+        Exit
     }
 }

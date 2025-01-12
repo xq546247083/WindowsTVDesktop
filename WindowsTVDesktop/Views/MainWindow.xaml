@@ -13,17 +13,17 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="18*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="19*"></RowDefinition>
         </Grid.RowDefinitions>
         <TextBlock FontSize="30"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center">Windows电视桌面</TextBlock>
         <ListBox Grid.Row="1"
+                 x:Name="AppListBox"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
                  ItemsSource="{Binding AppList}"
-                 SelectedItem="{Binding SelectedAppInfo}">
+                 SelectedItem="{Binding SelectedApp}">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
@@ -31,43 +31,29 @@
             </ListBox.ItemsPanel>
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <Button Command="{Binding ClickCommand}">>
-                        <Button.Template>
-                            <ControlTemplate>
-                                <Grid Margin="10"
-                                      Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
-                                      Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}">
-                                    <TextBlock VerticalAlignment="Center"
-                                               HorizontalAlignment="Center"
-                                               Text="{Binding Title}"
-                                               FontSize="30"
-                                               FontWeight="Bold" />
-                                    <Image Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
-                                           Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
-                                           Stretch="Fill"
-                                           Source="{Binding IconPathExt, IsAsync=True}" />
-                                </Grid>
-                            </ControlTemplate>
-                        </Button.Template>
-                    </Button>
-
+                    <Border BorderThickness="1"
+                            BorderBrush="Black">
+                        <Button Command="{Binding ClickCommand}">>
+                            <Button.Template>
+                                <ControlTemplate>
+                                    <Grid Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
+                                          Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}">
+                                        <TextBlock VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center"
+                                                   Text="{Binding Title}"
+                                                   FontSize="30"
+                                                   FontWeight="Bold" />
+                                        <Image Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
+                                               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
+                                               Stretch="Fill"
+                                               Source="{Binding IconPathExt, IsAsync=True}" />
+                                    </Grid>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Button Grid.Column="1"
-                    FontSize="30"
-                    FontWeight="Bold"
-                    Command="{Binding ConfigCommand}">配置</Button>
-            <Button Grid.Column="2"
-                    FontSize="30"
-                    FontWeight="Bold"
-                    Command="{Binding ExitCommand}">退出</Button>
-        </Grid>
     </Grid>
 </Window>

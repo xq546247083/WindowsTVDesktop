@@ -6,8 +6,30 @@ using WindowsTVDesktop.Models;
 
 namespace WindowsTVDesktop.Managers
 {
-    internal class ConfigManager
+    public static class ConfigManager
     {
+        private static AppInfo addAppInfo = new AppInfo()
+        {
+            Name = "新增",
+            AppType = AppType.Add,
+            IconPath = "Resources/add.png",
+            Order = int.MaxValue,
+        };
+
+        private static AppInfo configAppInfo = new AppInfo()
+        {
+            Name = "配置",
+            AppType = AppType.Config,
+            Order = int.MaxValue,
+        };
+
+        private static AppInfo exitAppInfo = new AppInfo()
+        {
+            Name = "退出",
+            AppType = AppType.Exit,
+            Order = int.MaxValue,
+        };
+
         /// <summary>
         /// 读取配置
         /// </summary>
@@ -17,13 +39,9 @@ namespace WindowsTVDesktop.Managers
             try
             {
                 var result = new Config();
-                result.AppInfoList.Add(new AppInfo()
-                {
-                    Name = "新增",
-                    AppType = AppType.Add,
-                    IconPath = "Resources/add.png",
-                    Order = int.MaxValue,
-                });
+                result.AppInfoList.Add(addAppInfo);
+                result.AppInfoList.Add(configAppInfo);
+                result.AppInfoList.Add(exitAppInfo);
 
                 // 创建文件
                 var infoFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini");
