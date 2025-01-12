@@ -1,8 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using System.ComponentModel;
+using System.Windows;
 using System.Windows.Controls;
 using WindowsTVDesktop.Common;
+using WindowsTVDesktop.Enum;
+using WindowsTVDesktop.Managers;
 using WindowsTVDesktop.Models;
 
 namespace WindowsTVDesktop.ViewModels
@@ -25,20 +27,20 @@ namespace WindowsTVDesktop.ViewModels
         /// <summary>
         /// 应用列表
         /// </summary>
-        private List<AppInfo> appInfoList;
+        private List<AppViewModel> appList;
 
         /// <summary>
         /// 应用列表
         /// </summary>
-        public List<AppInfo> AppInfoList
+        public List<AppViewModel> AppList
         {
             get
             {
-                return appInfoList;
+                return appList;
             }
             set
             {
-                appInfoList = value;
+                appList = value;
                 OnPropertyChanged();
             }
         }
@@ -64,44 +66,55 @@ namespace WindowsTVDesktop.ViewModels
             }
         }
 
+        /// <summary>
+        /// 应用大小
+        /// </summary>
+        private int appSize;
+
+        /// <summary>
+        /// 应用大小
+        /// </summary>
+        public int AppSize
+        {
+            get
+            {
+                return appSize;
+            }
+            set
+            {
+                appSize = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         #region 绑定方法
 
         /// <summary>
-        /// 正在关闭窗口
+        /// 配置
         /// </summary>
-        public RelayCommand<CommandParameterEx> MainWindowClosingCommand => new RelayCommand<CommandParameterEx>(DoMainWindowClosing);
+        public RelayCommand ConfigCommand => new RelayCommand(ClickConfig);
 
         /// <summary>
-        /// 正在关闭窗口
+        /// 配置
         /// </summary>
-        /// <param name="commandParameterEx">参数</param>
-        private void DoMainWindowClosing(CommandParameterEx commandParameterEx)
+        private void ClickConfig()
         {
-            // 转换参数
-            var cancelEventArgs = commandParameterEx.EventArgs as CancelEventArgs;
-            if (cancelEventArgs == null)
-            {
-                return;
-            }
 
-            AppGlobal.MainWindow.Visibility = System.Windows.Visibility.Hidden;
-            AppGlobal.MainWindow.ShowInTaskbar = false;
-            cancelEventArgs.Cancel = true;
         }
 
         /// <summary>
-        /// 点击新建
+        /// 退出
         /// </summary>
-        public RelayCommand NewBtnClickCommand => new RelayCommand(DoNewBtnClickCommand);
+        public RelayCommand ExitCommand => new RelayCommand(ClickExit);
 
         /// <summary>
-        /// 点击新建
+        /// 退出
         /// </summary>
-        private void DoNewBtnClickCommand()
+        private void ClickExit()
         {
-            
+            Application.Current.Shutdown();
         }
 
         #endregion
@@ -109,35 +122,25 @@ namespace WindowsTVDesktop.ViewModels
         #region 私有方法
 
         /// <summary>
-        /// 显示提示框
+        /// 加载配置
         /// </summary>
-        /// <param name="text">文本</param>
-        private void ShowToolTip(string text)
+        private void LoadConfig()
         {
-            var tempToolTip = new ToolTip();
-            tempToolTip.Content = text;
-            tempToolTip.StaysOpen = false;
-            tempToolTip.IsOpen = true;
+            var config = ConfigManager.GetConfig();
+            AppList = config.AppInfoList.Select(r => r.Turn()).OrderBy(r => r.Order).ToList();
+            AppSize = config.AppSize;
         }
-
-        /// <summary>
-        /// 重新加载
-        /// </summary>
-        private void ReLoad()
-        {
-            LoadConfig();
-        }
-
 
         #endregion
 
         #region 公共方法
 
         /// <summary>
-        /// 加载配置
+        /// 重新加载
         /// </summary>
-        public void LoadConfig()
+        public void ReLoad()
         {
+            LoadConfig();
         }
 
         #endregion

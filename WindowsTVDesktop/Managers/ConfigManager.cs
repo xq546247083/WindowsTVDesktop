@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.IO;
 using System.Windows;
+using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Models;
 
 namespace WindowsTVDesktop.Managers
@@ -15,11 +16,20 @@ namespace WindowsTVDesktop.Managers
         {
             try
             {
+                var result = new Config();
+                result.AppInfoList.Add(new AppInfo()
+                {
+                    Name = "新增",
+                    AppType = AppType.Add,
+                    IconPath = "Resources/add.png",
+                    Order = int.MaxValue,
+                });
+
                 // 创建文件
                 var infoFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini");
                 if (!File.Exists(infoFilePath))
                 {
-                    return new Config();
+                    return result;
                 }
 
                 // 序列化对象
@@ -27,7 +37,7 @@ namespace WindowsTVDesktop.Managers
                 var config = JsonConvert.DeserializeObject<Config>(strTotal);
                 if (config == null)
                 {
-                    return new Config();
+                    return result;
                 }
 
                 return config;

@@ -16,6 +16,11 @@ namespace WindowsTVDesktop
         public static string AppName = "WindowsTVDesktop";
 
         /// <summary>
+        /// 应用名
+        /// </summary>
+        public static string AppTitle = "Windows电视桌面";
+
+        /// <summary>
         /// 初始化
         /// </summary>
         public static void Init()
