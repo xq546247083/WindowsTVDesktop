@@ -19,7 +19,7 @@
                     DoubleClickCommand="{Binding ClickCommand}"
                     DoubleClickCommandParameter="Show"
                     ContextMenu="{StaticResource SysTrayMenu}"
-                    IconSource="/steam.ico">
+                    IconSource="/app.ico">
         <tb:TaskbarIcon.TrayToolTip>
             <Border Background="White"
                     CornerRadius="5"

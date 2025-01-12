@@ -10,10 +10,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="steam.ico" />
-  </ItemGroup>
-
-  <ItemGroup>
     <COMReference Include="TaskScheduler">
       <WrapperTool>tlbimp</WrapperTool>
       <VersionMinor>0</VersionMinor>
@@ -32,8 +28,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="steam.ico">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <Resource Include="app.ico">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
 
