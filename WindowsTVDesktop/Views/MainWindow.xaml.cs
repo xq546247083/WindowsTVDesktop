@@ -13,7 +13,13 @@ namespace WindowsTVDesktop.Views
             InitializeComponent();
             this.DataContext = AppGlobal.MainWindowViewModel;
 
+            this.Activated += MainWindow_Activated;
             Keyboard.AddKeyDownHandler(this, OnKeyDown);
+        }
+
+        private void MainWindow_Activated(object? sender, EventArgs e)
+        {
+            this.AppListBox.Focus();
         }
 
         private void OnKeyDown(object sender, KeyEventArgs e)

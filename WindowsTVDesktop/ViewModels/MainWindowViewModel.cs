@@ -18,7 +18,7 @@ namespace WindowsTVDesktop.ViewModels
         public MainWindowViewModel()
         {
             ReLoad();
-            SelectedApp = AppList.FirstOrDefault();
+            SelectedApp = AppList?.FirstOrDefault();
         }
 
         #region 绑定属性
@@ -47,12 +47,12 @@ namespace WindowsTVDesktop.ViewModels
         /// <summary>
         /// 选中应用
         /// </summary>
-        private AppViewModel selectedApp;
+        private AppViewModel? selectedApp;
 
         /// <summary>
         /// 选中应用
         /// </summary>
-        public AppViewModel SelectedApp
+        public AppViewModel? SelectedApp
         {
             get
             {
@@ -137,7 +137,7 @@ namespace WindowsTVDesktop.ViewModels
         {
             if (e.Key == Key.Return)
             {
-                selectedApp.Click();
+                selectedApp?.Click();
             }
             else if (e.Key == Key.Apps)
             {
