@@ -6,6 +6,7 @@
         <MenuItem Height="25"
                   Header="开机自启动"
                   IsCheckable="True"
+                  IsChecked="{Binding AutoStart}"
                   Command="{Binding ClickCommand}"
                   CommandParameter="AutoStart" />
         <Separator />
