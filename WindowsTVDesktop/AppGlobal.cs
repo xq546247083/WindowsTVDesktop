@@ -21,6 +21,9 @@ namespace WindowsTVDesktop
         public static void Init()
         {
             Application.Current.MainWindow = MainWindow;
+            Application.Current.MainWindow.Show();
+            Application.Current.MainWindow.Activate();
+
             TaskbarIcon.DataContext = MainTaskbarIconViewModel;
         }
 

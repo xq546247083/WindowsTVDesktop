@@ -1,14 +1,4 @@
-﻿using System.Numerics;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace WindowsTVDesktop.Views
 {
@@ -21,6 +11,12 @@ namespace WindowsTVDesktop.Views
         {
             InitializeComponent();
             this.DataContext = AppGlobal.MainWindowViewModel;
+        }
+
+        private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Application.Current.MainWindow.Visibility = System.Windows.Visibility.Hidden;
+            e.Cancel = true;
         }
     }
 }
