@@ -17,11 +17,6 @@ namespace WindowsTVDesktop.Views
             this.KeyDown += MainWindow_KeyDown;
         }
 
-        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
-        {
-            AppGlobal.MainWindowViewModel.OnKeyDown(e);
-        }
-
         private void MainWindow_Activated(object? sender, EventArgs e)
         {
             this.AppListBox.Focus();
@@ -31,6 +26,11 @@ namespace WindowsTVDesktop.Views
         {
             Application.Current.MainWindow.Visibility = System.Windows.Visibility.Hidden;
             e.Cancel = true;
+        }
+
+        private void MainWindow_KeyDown(object sender, KeyEventArgs e)
+        {
+            AppGlobal.MainWindowViewModel.OnKeyDown(e);
         }
 
         private void AppListBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
