@@ -30,6 +30,11 @@ namespace WindowsTVDesktop
             Application.Current.MainWindow.Activate();
 
             TaskbarIcon.DataContext = MainTaskbarIconViewModel;
+            // todo xiaoqiang
+            // 1、在窗体激活时，获取一次显示分辨率，显示在最下面。
+            // 2、配置界面 自启动，按钮大小，是否全屏
+            // 3、应用的配置界面，ICON，启动参数，名字等
+            // 4、优化获取应用的图标，现在的太小了。
         }
 
         /// <summary>

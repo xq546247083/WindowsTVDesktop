@@ -135,13 +135,13 @@ namespace WindowsTVDesktop.ViewModels
         /// <param name="e"></param>
         public void OnKeyDown(KeyEventArgs e)
         {
+            UIHelper.ShowToolTip(e.Key.ToString());
             if (e.Key == Key.Return)
             {
                 selectedApp?.Click();
             }
             else if (e.Key == Key.Apps)
             {
-                MessageBox.Show("点击菜单键");
             }
         }
 
