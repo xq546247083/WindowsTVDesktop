@@ -51,7 +51,8 @@ namespace WindowsTVDesktop.Common
                 var saveIconPath = $"./{iconPath}";
                 if (File.Exists(saveIconPath))
                 {
-                    File.Delete(saveIconPath);
+                    result.Add(iconPath);
+                    continue;
                 }
 
                 using (var ico = Icon.FromHandle(hIcons[i]))
