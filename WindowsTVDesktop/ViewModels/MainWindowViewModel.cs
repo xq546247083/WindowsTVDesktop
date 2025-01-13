@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Windows.Input;
 using WindowsTVDesktop.Common;
 using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
@@ -171,6 +172,14 @@ namespace WindowsTVDesktop.ViewModels
         public void ReLoad()
         {
             LoadConfig();
+        }
+
+        public void MainWindow_KeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                selectedApp?.Click();
+            }
         }
 
         public void AppListBox_MouseLeftButtonUp()

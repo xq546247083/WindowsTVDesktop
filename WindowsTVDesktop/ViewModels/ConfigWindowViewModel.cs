@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System.Windows.Input;
 using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
 
@@ -121,6 +122,15 @@ namespace WindowsTVDesktop.ViewModels
         {
             selectedConfig?.Click();
             ReLoad();
+        }
+
+        public void ConfigWindow_KeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Return)
+            {
+                selectedConfig?.Click();
+                ReLoad();
+            }
         }
 
         #endregion

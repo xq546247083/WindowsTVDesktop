@@ -49,6 +49,8 @@ namespace WindowsTVDesktop.Views
             {
                 this.AppListBox.ContextMenu.IsOpen = true;
             }
+
+            AppGlobal.MainWindowViewModel.MainWindow_KeyDown(e);
         }
 
         private void AppListBox_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)

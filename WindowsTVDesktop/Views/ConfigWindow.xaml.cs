@@ -13,11 +13,17 @@ namespace WindowsTVDesktop.Views
             this.DataContext = AppGlobal.ConfigWindowViewModel;
 
             this.Activated += ConfigWindow_Activated;
+            this.KeyDown += ConfigWindow_KeyDown;
         }
 
         private void ConfigWindow_Activated(object? sender, EventArgs e)
         {
             this.ConfigListBox.Focus();
+        }
+
+        private void ConfigWindow_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            AppGlobal.ConfigWindowViewModel.ConfigWindow_KeyDown(e);
         }
 
         private void ConfigListBox_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
