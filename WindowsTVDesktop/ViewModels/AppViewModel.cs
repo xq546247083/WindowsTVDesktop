@@ -114,6 +114,7 @@ namespace WindowsTVDesktop.ViewModels
                 var process = new Process();
                 process.StartInfo.FileName = StartPath;
                 process.StartInfo.Arguments = StartArgs;
+                process.StartInfo.WindowStyle = ProcessWindowStyle.Maximized;
 
                 process.Start();
             }
