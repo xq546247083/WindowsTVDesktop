@@ -1,5 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using System.Windows.Interop;
+using WindowsTVDesktop.Managers;
 
 namespace WindowsTVDesktop.Views
 {
@@ -15,6 +17,18 @@ namespace WindowsTVDesktop.Views
 
             this.Activated += MainWindow_Activated;
             this.KeyDown += MainWindow_KeyDown;
+        }
+
+        protected override void OnSourceInitialized(EventArgs e)
+        {
+            base.OnSourceInitialized(e);
+            GlobalHotKeyManager.Init(new WindowInteropHelper(this));
+        }
+
+        protected override void OnClosed(EventArgs e)
+        {
+            GlobalHotKeyManager.UnInit();
+            base.OnClosed(e);
         }
 
         private void MainWindow_Activated(object? sender, EventArgs e)

@@ -105,6 +105,27 @@ namespace WindowsTVDesktop.ViewModels
             }
         }
 
+        /// <summary>
+        /// 全局热键信息
+        /// </summary>
+        private string globalHotKeyMsg;
+
+        /// <summary>
+        /// 全局热键信息
+        /// </summary>
+        public string GlobalHotKeyMsg
+        {
+            get
+            {
+                return globalHotKeyMsg;
+            }
+            set
+            {
+                globalHotKeyMsg = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         #region 私有方法
