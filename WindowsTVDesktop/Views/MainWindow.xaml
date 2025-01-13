@@ -26,6 +26,12 @@
                  ItemsSource="{Binding AppList}"
                  SelectedItem="{Binding SelectedApp}"
                  MouseLeftButtonUp="AppListBox_MouseLeftButtonUp">
+            <ListBox.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="删除"
+                              Command="{Binding DeleteCommand}"></MenuItem>
+                </ContextMenu>
+            </ListBox.ContextMenu>
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />

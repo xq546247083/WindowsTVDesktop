@@ -47,12 +47,18 @@ namespace WindowsTVDesktop.Common
                     continue;
                 }
 
+                var iconPath = $"Resources/{appName}_{i}.png";
+                var saveIconPath = $"./{iconPath}";
+                if (File.Exists(saveIconPath))
+                {
+                    File.Delete(saveIconPath);
+                }
+
                 using (var ico = Icon.FromHandle(hIcons[i]))
                 {
-                    var iconPath = $"Resources/{appName}_{i}.png";
                     using (var myIcon = ico.ToBitmap())
                     {
-                        myIcon.Save($"./{iconPath}");
+                        myIcon.Save(saveIconPath);
                         result.Add(iconPath);
                     }
                 }

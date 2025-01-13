@@ -1,5 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
 using WindowsTVDesktop.Common;
 using WindowsTVDesktop.Managers;
 
@@ -128,6 +128,26 @@ namespace WindowsTVDesktop.ViewModels
 
         #endregion
 
+        #region 界面方法
+
+        public RelayCommand DeleteCommand => new RelayCommand(Delete);
+
+        private void Delete()
+        {
+            if (selectedApp == null)
+            {
+                return;
+            }
+
+            var config = ConfigManager.GetConfig();
+            config.AppInfoList.RemoveAll(r => r.StartPath == selectedApp.StartPath && r.AppType == Enum.AppType.Desktop);
+            ConfigManager.Save(config);
+
+            ReLoad();
+        }
+
+        #endregion
+
         #region 私有方法
 
         /// <summary>
@@ -150,17 +170,6 @@ namespace WindowsTVDesktop.ViewModels
         public void ReLoad()
         {
             LoadConfig();
-        }
-
-        /// <summary>
-        /// 点击按钮
-        /// </summary>
-        /// <param name="e"></param>
-        public void OnKeyDown(KeyEventArgs e)
-        {
-            if (e.Key == Key.Apps)
-            {
-            }
         }
 
         public void AppListBox_MouseLeftButtonUp()
