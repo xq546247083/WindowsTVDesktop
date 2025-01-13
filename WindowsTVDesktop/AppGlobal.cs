@@ -31,7 +31,7 @@ namespace WindowsTVDesktop
 
             TaskbarIcon.DataContext = MainTaskbarIconViewModel;
             // todo xiaoqiang
-            // 3、应用的配置界面，ICON，启动参数，名字、背景色
+            // 3、应用的右键菜单，删除
         }
 
         /// <summary>
