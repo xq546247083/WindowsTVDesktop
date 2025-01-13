@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using WindowsTVDesktop.Common;
+using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
 
 namespace WindowsTVDesktop.ViewModels
@@ -134,7 +135,7 @@ namespace WindowsTVDesktop.ViewModels
 
         private void Delete()
         {
-            if (selectedApp == null)
+            if (selectedApp == null || selectedApp.AppType != AppType.Desktop)
             {
                 return;
             }
