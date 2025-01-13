@@ -30,6 +30,7 @@ namespace WindowsTVDesktop
             Application.Current.MainWindow.Activate();
 
             TaskbarIcon.DataContext = MainTaskbarIconViewModel;
+            // todo xiaoqiang 右键菜单删除还有问题
         }
 
         /// <summary>

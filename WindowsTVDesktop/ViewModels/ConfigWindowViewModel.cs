@@ -10,6 +10,8 @@ namespace WindowsTVDesktop.ViewModels
     /// </summary>
     public class ConfigWindowViewModel : ObservableObject
     {
+        private string? oldSelectedConfigName;
+
         /// <summary>
         /// 构造方法
         /// </summary>
@@ -60,6 +62,11 @@ namespace WindowsTVDesktop.ViewModels
             {
                 selectedConfig = value;
                 OnPropertyChanged();
+
+                if (value != null) 
+                {
+                    oldSelectedConfigName = value.Name;
+                }
             }
         }
 
@@ -104,6 +111,7 @@ namespace WindowsTVDesktop.ViewModels
             ];
 
             ItemSize = config.ItemSize;
+            SelectedConfig = ConfigList.FirstOrDefault(r => r.Name == oldSelectedConfigName);
         }
 
         #endregion
