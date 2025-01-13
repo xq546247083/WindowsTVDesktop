@@ -13,11 +13,10 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="19*"></RowDefinition>
+            <RowDefinition Height="18*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock FontSize="30"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center">Windows电视桌面</TextBlock>
+        <TextBlock>Windows电视桌面</TextBlock>
         <ListBox Grid.Row="1"
                  x:Name="AppListBox"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
@@ -36,10 +35,7 @@
                             BorderBrush="Black">
                         <Grid Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
                               Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}">
-                            <TextBlock VerticalAlignment="Center"
-                                       HorizontalAlignment="Center"
-                                       Text="{Binding Title}"
-                                       FontSize="30"
+                            <TextBlock Text="{Binding Title}"
                                        FontWeight="Bold" />
                             <Image Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
                                    Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.AppSize}"
@@ -50,5 +46,16 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="15*"></ColumnDefinition>
+                <ColumnDefinition Width="5*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBlock>屏幕分辨率：</TextBlock>
+                <TextBlock Text="{Binding ScreenResolution}"></TextBlock>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

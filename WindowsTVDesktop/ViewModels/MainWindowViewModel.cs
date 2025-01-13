@@ -86,6 +86,27 @@ namespace WindowsTVDesktop.ViewModels
             }
         }
 
+        /// <summary>
+        /// 屏幕分辨率
+        /// </summary>
+        private string screenResolution;
+
+        /// <summary>
+        /// 屏幕分辨率
+        /// </summary>
+        public string ScreenResolution
+        {
+            get
+            {
+                return screenResolution;
+            }
+            set
+            {
+                screenResolution = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion
 
         #region 绑定方法
@@ -143,6 +164,13 @@ namespace WindowsTVDesktop.ViewModels
         public void AppListBox_MouseLeftButtonUp()
         {
             selectedApp?.Click();
+        }
+
+        public void MainWindow_Activated()
+        {
+            var screenWidth = System.Windows.Forms.Screen.PrimaryScreen?.Bounds.Width;
+            var screenHeight = System.Windows.Forms.Screen.PrimaryScreen?.Bounds.Height;
+            ScreenResolution = $"{screenWidth}*{screenHeight}";
         }
 
         #endregion

@@ -20,6 +20,7 @@ namespace WindowsTVDesktop.Views
         private void MainWindow_Activated(object? sender, EventArgs e)
         {
             this.AppListBox.Focus();
+            AppGlobal.MainWindowViewModel.MainWindow_Activated();
         }
 
         private void MainWindow_Closing(object sender, System.ComponentModel.CancelEventArgs e)

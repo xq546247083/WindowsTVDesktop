@@ -9,6 +9,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Themes\ControlStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Themes\MainTaskbarIcon.xaml">
       <SubType>Designer</SubType>
     </Page>

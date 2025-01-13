@@ -52,4 +52,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Page Update="Themes\ControlStyle.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+
 </Project>
