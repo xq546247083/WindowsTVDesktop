@@ -23,10 +23,10 @@ namespace WindowsTVDesktop.Managers
             Order = int.MaxValue,
         };
 
-        private static AppInfo exitAppInfo = new AppInfo()
+        private static AppInfo closeAppInfo = new AppInfo()
         {
-            Name = "退出",
-            AppType = AppType.Exit,
+            Name = "关闭",
+            AppType = AppType.Close,
             Order = int.MaxValue,
         };
 
@@ -41,7 +41,7 @@ namespace WindowsTVDesktop.Managers
                 var result = new Config();
                 result.AppInfoList.Add(addAppInfo);
                 result.AppInfoList.Add(configAppInfo);
-                result.AppInfoList.Add(exitAppInfo);
+                result.AppInfoList.Add(closeAppInfo);
 
                 // 创建文件
                 var infoFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "config.ini");

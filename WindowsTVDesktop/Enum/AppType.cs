@@ -5,6 +5,6 @@
         Desktop,
         Add,
         Config,
-        Exit
+        Close
     }
 }

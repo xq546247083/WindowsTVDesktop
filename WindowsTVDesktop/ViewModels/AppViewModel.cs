@@ -59,9 +59,9 @@ namespace WindowsTVDesktop.ViewModels
             {
                 AppGlobal.ConfigWindow.ShowDialog();
             }
-            else if (AppType == AppType.Exit)
+            else if (AppType == AppType.Close)
             {
-                Application.Current.Shutdown();
+                Application.Current.MainWindow.Close();
             }
             else if (AppType == AppType.Desktop)
             {
