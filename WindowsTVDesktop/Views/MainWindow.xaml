@@ -9,7 +9,8 @@
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Closing="MainWindow_Closing">
+        Closing="MainWindow_Closing"
+        Background="LightGray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
@@ -18,6 +19,7 @@
         </Grid.RowDefinitions>
         <TextBlock>Windows电视桌面</TextBlock>
         <ListBox Grid.Row="1"
+                 Background="Transparent"
                  x:Name="AppListBox"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
