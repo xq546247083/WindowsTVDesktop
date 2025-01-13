@@ -1,4 +1,5 @@
-﻿using WindowsTVDesktop.Enum;
+﻿using System.Windows;
+using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
 
 namespace WindowsTVDesktop.ViewModels
@@ -25,6 +26,14 @@ namespace WindowsTVDesktop.ViewModels
             }
         }
 
+        public Visibility DataDescriptionVisibility
+        {
+            get
+            {
+                return string.IsNullOrEmpty(DataDescription) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
         public ConfigType ConfigType
         {
             get;
@@ -43,12 +52,15 @@ namespace WindowsTVDesktop.ViewModels
             else if (ConfigType == ConfigType.AutoStart)
             {
                 TaskSchedulerManager.UpdateIsLaunchOnSysPowerOnByTaskScheduler();
+                AppGlobal.MainTaskbarIconViewModel.ReLoad();
             }
             else if (ConfigType == ConfigType.FullScreen)
             {
                 var config = ConfigManager.GetConfig();
                 config.FullScreen = !config.FullScreen;
                 ConfigManager.Save(config);
+
+                AppGlobal.MainWindowViewModel.ReLoad();
             }
             else if (ConfigType == ConfigType.AddItemSize)
             {
@@ -60,6 +72,7 @@ namespace WindowsTVDesktop.ViewModels
                 }
 
                 ConfigManager.Save(config);
+                AppGlobal.MainWindowViewModel.ReLoad();
             }
             else if (ConfigType == ConfigType.SubItemSize)
             {
@@ -71,6 +84,7 @@ namespace WindowsTVDesktop.ViewModels
                 }
 
                 ConfigManager.Save(config);
+                AppGlobal.MainWindowViewModel.ReLoad();
             }
         }
     }

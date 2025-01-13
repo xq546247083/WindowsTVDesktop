@@ -96,7 +96,7 @@ namespace WindowsTVDesktop.ViewModels
             ConfigList =
             [
                 new ConfigViewModel() { Name = "开机自启动：", Data = TaskSchedulerManager.GetIsLaunchOnSysPowerOnByTaskScheduler(), Order = 1, ConfigType = ConfigType.AutoStart },
-                new ConfigViewModel() { Name = "全屏显示：", Data = config.FullScreen, Order = 2, ConfigType = ConfigType.FullScreen },
+                //new ConfigViewModel() { Name = "全屏显示：", Data = config.FullScreen, Order = 2, ConfigType = ConfigType.FullScreen },
                 new ConfigViewModel() { Name = "变大", Order = 3, ConfigType = ConfigType.AddItemSize },
                 new ConfigViewModel() { Name = "变小", Order = 4, ConfigType = ConfigType.SubItemSize },
                 new ConfigViewModel() { Name = "关闭", Order = 5, ConfigType = ConfigType.Close },
@@ -120,6 +120,7 @@ namespace WindowsTVDesktop.ViewModels
         public void ConfigListBox_MouseLeftButtonUp()
         {
             selectedConfig?.Click();
+            ReLoad();
         }
 
         #endregion

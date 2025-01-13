@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        ShowInTaskbar="False"
+        Title="配置"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
@@ -32,12 +32,14 @@
                 <DataTemplate>
                     <Border BorderThickness="1"
                             BorderBrush="Black"
-                            Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.ItemSize}"
-                            Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.ItemSize}">
-                        <StackPanel>
+                            Height="100"
+                            Width="200">
+                        <StackPanel VerticalAlignment="Center"
+                                    HorizontalAlignment="Center">
                             <TextBlock Text="{Binding Title}"
                                        FontWeight="Bold" />
-                            <TextBlock Text="{Binding DataDescription}"
+                            <TextBlock Visibility="{Binding DataDescriptionVisibility}" Foreground="FloralWhite"
+                                       Text="{Binding DataDescription}"
                                        FontWeight="Bold" />
                         </StackPanel>
                     </Border>

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using WindowsTVDesktop.ViewModels;
 
 namespace WindowsTVDesktop.Views
 {
