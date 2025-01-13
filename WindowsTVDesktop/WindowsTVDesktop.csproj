@@ -43,6 +43,7 @@
   <ItemGroup>
     <None Include="Common\AppHelper.cs" />
     <None Include="Common\CommonTurn.cs" />
+    <None Include="Enum\ConfigType.cs" />
     <None Include="Enum\AppType.cs" />
   </ItemGroup>
 

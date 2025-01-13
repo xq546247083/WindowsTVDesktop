@@ -31,9 +31,7 @@ namespace WindowsTVDesktop
 
             TaskbarIcon.DataContext = MainTaskbarIconViewModel;
             // todo xiaoqiang
-            // 2、配置界面 自启动，按钮大小，是否全屏
             // 3、应用的配置界面，ICON，启动参数，名字、背景色
-            // 4、优化获取应用的图标，现在的太小了。
         }
 
         /// <summary>
@@ -108,6 +106,55 @@ namespace WindowsTVDesktop
 
                 return mainWindowViewModel;
             }
+        }
+
+        /// <summary>
+        /// 配置
+        /// </summary>
+        private static ConfigWindow configWindow;
+
+        /// <summary>
+        /// 配置
+        /// </summary>
+        public static ConfigWindow ConfigWindow
+        {
+            get
+            {
+                if (configWindow == null)
+                {
+                    configWindow = new ConfigWindow();
+                }
+
+                return configWindow;
+            }
+        }
+
+        /// <summary>
+        /// 配置ViewModel
+        /// </summary>
+        private static ConfigWindowViewModel configWindowViewModel;
+
+        /// <summary>
+        /// 配置ViewModel
+        /// </summary>
+        public static ConfigWindowViewModel ConfigWindowViewModel
+        {
+            get
+            {
+                if (configWindowViewModel == null)
+                {
+                    configWindowViewModel = new ConfigWindowViewModel();
+                }
+
+                return configWindowViewModel;
+            }
+        }
+
+        public static void CloseConfigWindow()
+        {
+            configWindow?.Close();
+            configWindow = null;
+            configWindowViewModel = null;
         }
     }
 }

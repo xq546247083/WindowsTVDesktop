@@ -1,31 +1,28 @@
-﻿<Window x:Class="WindowsTVDesktop.Views.MainWindow"
+﻿<Window x:Class="WindowsTVDesktop.Views.ConfigWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="Windows电视桌面"
-        WindowState="Maximized"
+        ShowInTaskbar="False"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         ResizeMode="NoResize"
-        Closing="MainWindow_Closing"
-        Background="LightGray">
+        Background="DarkGray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"></RowDefinition>
-            <RowDefinition Height="18*"></RowDefinition>
-            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="19*"></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBlock>Windows电视桌面</TextBlock>
+        <TextBlock>配置</TextBlock>
         <ListBox Grid.Row="1"
                  Background="Transparent"
-                 x:Name="AppListBox"
+                 x:Name="ConfigListBox"
                  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled"
-                 ItemsSource="{Binding AppList}"
-                 SelectedItem="{Binding SelectedApp}"
-                 MouseLeftButtonUp="AppListBox_MouseLeftButtonUp">
+                 ItemsSource="{Binding ConfigList}"
+                 SelectedItem="{Binding SelectedConfig}"
+                 MouseLeftButtonUp="ConfigListBox_MouseLeftButtonUp">
             <ListBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapPanel Orientation="Horizontal" />
@@ -37,28 +34,15 @@
                             BorderBrush="Black"
                             Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.ItemSize}"
                             Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.ItemSize}">
-                        <Grid>
+                        <StackPanel>
                             <TextBlock Text="{Binding Title}"
                                        FontWeight="Bold" />
-                            <Image Height="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.ItemSize}"
-                                   Width="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=Window}, Path=DataContext.ItemSize}"
-                                   Stretch="Fill"
-                                   Source="{Binding IconPathExt, IsAsync=True}" />
-                        </Grid>
+                            <TextBlock Text="{Binding DataDescription}"
+                                       FontWeight="Bold" />
+                        </StackPanel>
                     </Border>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <Grid Grid.Row="2">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="15*"></ColumnDefinition>
-                <ColumnDefinition Width="5*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="1"
-                        Orientation="Horizontal">
-                <TextBlock>屏幕分辨率：</TextBlock>
-                <TextBlock Text="{Binding ScreenResolution}"></TextBlock>
-            </StackPanel>
-        </Grid>
     </Grid>
 </Window>

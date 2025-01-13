@@ -1,34 +1,14 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using System.Windows;
 using WindowsTVDesktop.Common;
 using WindowsTVDesktop.Enum;
 using WindowsTVDesktop.Managers;
+using WindowsTVDesktop.Views;
 
 namespace WindowsTVDesktop.ViewModels
 {
-    public class AppViewModel : ObservableObject
+    public class AppViewModel : ItemViewModel
     {
-        public string Name
-        {
-            get;
-            set;
-        }
-
-        public int Order
-        {
-            get;
-            set;
-        }
-
-        public string IconPath
-        {
-            get;
-            set;
-        }
-
         public string StartPath
         {
             get;
@@ -47,36 +27,10 @@ namespace WindowsTVDesktop.ViewModels
             set;
         }
 
-        public string Title
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(IconPath))
-                {
-                    return Name;
-                }
-
-                return string.Empty;
-            }
-        }
-
-        public string IconPathExt
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(IconPath))
-                {
-                    return IconPath;
-                }
-
-                return Path.GetFullPath(IconPath);
-            }
-        }
-
         /// <summary>
         /// 点击
         /// </summary>
-        public void Click()
+        public override void Click()
         {
             if (AppType == AppType.Add)
             {
@@ -103,7 +57,7 @@ namespace WindowsTVDesktop.ViewModels
             }
             else if (AppType == AppType.Config)
             {
-
+                AppGlobal.ConfigWindow.ShowDialog();
             }
             else if (AppType == AppType.Exit)
             {

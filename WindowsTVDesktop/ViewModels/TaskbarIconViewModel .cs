@@ -1,7 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows;
-using WindowsTVDesktop.Common;
+using WindowsTVDesktop.Managers;
 
 namespace WindowsTVDesktop.ViewModels
 {
@@ -69,44 +69,9 @@ namespace WindowsTVDesktop.ViewModels
             }
             else if (type.ToString() == "AutoStart")
             {
-                UpdateIsLaunchOnSysPowerOnByTaskScheduler();
+                TaskSchedulerManager.UpdateIsLaunchOnSysPowerOnByTaskScheduler();
+                ReLoad();
             }
-        }
-
-        #endregion
-
-        #region 私有方法
-
-        /// <summary>
-        /// 获取是否计划任务自启动
-        /// </summary>
-        /// <returns></returns>
-        private bool GetIsLaunchOnSysPowerOnByTaskScheduler()
-        {
-            var taslScheduler = TaskSchedulerHelper.Get(AppGlobal.AppName);
-
-            return taslScheduler != null;
-        }
-
-        /// <summary>
-        /// 更新是否计划任务自启动
-        /// </summary>
-        /// <param name="sender">sender</param>
-        /// <param name="e">e</param>
-        private void UpdateIsLaunchOnSysPowerOnByTaskScheduler()
-        {
-            // 修改是否自启动
-            var currentValue = !GetIsLaunchOnSysPowerOnByTaskScheduler();
-            if (currentValue)
-            {
-                TaskSchedulerHelper.AddLuanchTask(AppGlobal.AppName,System.Windows.Forms.Application.ExecutablePath);
-            }
-            else
-            {
-                TaskSchedulerHelper.Del(AppGlobal.AppName);
-            }
-
-            ReLoad();
         }
 
         #endregion
@@ -115,7 +80,7 @@ namespace WindowsTVDesktop.ViewModels
 
         public void ReLoad()
         {
-            AutoStart = GetIsLaunchOnSysPowerOnByTaskScheduler();
+            AutoStart = TaskSchedulerManager.GetIsLaunchOnSysPowerOnByTaskScheduler();
         }
 
         #endregion

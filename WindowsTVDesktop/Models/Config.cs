@@ -6,16 +6,21 @@ namespace WindowsTVDesktop.Models
     {
         public Config()
         {
-            AppSize = 100;
+            ItemSize = 100;
             AppInfoList = [];
         }
 
-        public int AppSize
+        public int ItemSize
         {
             get; set;
         }
 
         public List<AppInfo> AppInfoList
+        {
+            get; set;
+        }
+
+        public Boolean FullScreen
         {
             get; set;
         }

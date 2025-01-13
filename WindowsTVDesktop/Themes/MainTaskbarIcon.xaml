@@ -3,15 +3,13 @@
                     xmlns:tb="http://www.hardcodet.net/taskbar">
     <ContextMenu x:Shared="false"
                  x:Key="SysTrayMenu">
-        <MenuItem Height="25"
-                  Header="开机自启动"
+        <MenuItem Header="开机自启动"
                   IsCheckable="True"
                   IsChecked="{Binding AutoStart}"
                   Command="{Binding ClickCommand}"
                   CommandParameter="AutoStart" />
         <Separator />
-        <MenuItem Height="25"
-                  Header="退出"
+        <MenuItem Header="退出"
                   Command="{Binding ClickCommand}"
                   CommandParameter="Shutdown" />
     </ContextMenu>

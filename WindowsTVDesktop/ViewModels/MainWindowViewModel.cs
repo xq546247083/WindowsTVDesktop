@@ -1,6 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using System.Windows;
 using System.Windows.Input;
 using WindowsTVDesktop.Common;
 using WindowsTVDesktop.Managers;
@@ -68,20 +66,20 @@ namespace WindowsTVDesktop.ViewModels
         /// <summary>
         /// 应用大小
         /// </summary>
-        private int appSize;
+        private int itemSize;
 
         /// <summary>
         /// 应用大小
         /// </summary>
-        public int AppSize
+        public int ItemSize
         {
             get
             {
-                return appSize;
+                return itemSize;
             }
             set
             {
-                appSize = value;
+                itemSize = value;
                 OnPropertyChanged();
             }
         }
@@ -109,23 +107,6 @@ namespace WindowsTVDesktop.ViewModels
 
         #endregion
 
-        #region 绑定方法
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        public RelayCommand ConfigCommand => new RelayCommand(ClickConfig);
-
-        /// <summary>
-        /// 配置
-        /// </summary>
-        private void ClickConfig()
-        {
-
-        }
-
-        #endregion
-
         #region 私有方法
 
         /// <summary>
@@ -135,7 +116,7 @@ namespace WindowsTVDesktop.ViewModels
         {
             var config = ConfigManager.GetConfig();
             AppList = config.AppInfoList.Select(r => r.Turn()).OrderBy(r => r.Order).ToList();
-            AppSize = config.AppSize;
+            ItemSize = config.ItemSize;
         }
 
         #endregion
